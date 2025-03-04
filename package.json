@@ -1,0 +1,19 @@
+{
+  "name": "timestamp-microservice",
+  "version": "1.0.0",
+  "description": "Exercise: Timestamp Microservice",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irene-fabbri/timestamp-microservice.git"
+  },
+  "author": "Irene Fabbri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irene-fabbri/timestamp-microservice/issues"
+  },
+  "homepage": "https://github.com/irene-fabbri/timestamp-microservice#readme"
+}
