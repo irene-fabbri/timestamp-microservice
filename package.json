@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/irene-fabbri/timestamp-microservice/issues"
   },
-  "homepage": "https://github.com/irene-fabbri/timestamp-microservice#readme"
+  "homepage": "https://github.com/irene-fabbri/timestamp-microservice#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }
