@@ -1,12 +1,10 @@
 const express = require(`express`);
-const cors = require(`cors`);
-const inputValidation = require('./input_validation')
+// const inputValidation = require('./input_validation')
 
 const app = express ();
 
-app.use(express.json({type: 'application/vnd.api+json'}));
-app.use(express.urlencoded({ extended: true })); 
-app.use(cors())
+// app.use(express.json({type: 'application/vnd.api+json'}));
+// app.use(express.urlencoded({ extended: true })); 
 
 // Allow for POST method and application/vnd.api+json Content-Type and Accept field
 app.use((req, res, next) => {
@@ -58,27 +56,11 @@ app.use((req, res, next) => {
   next();
 });
 
-
-// Handle invalid JSON
-app.use((err, req, res, next) => {
-  if (err instanceof SyntaxError) {
-    return res.status(400).send({
-      "errors": [
-        {
-          "status": "400",
-          "code": "invalid-JSON",          
-          "title": "invalid JSON",
-          "detail": "The paylod MUST be valid JSON"
-        }
-      ]
-    });
-  }
-  next(err); // Pass the error to the next middleware if it's not a syntax error
-});
-
-
 app.get('/api/:date?',  (req,res) => {
-  console.log(req.params);
+  console.log(req.params)
+  console.log(req.params.date)
+  const date = new Date(parseInt(req.params.date));
+  console.log(date.toString());
 });
 
 // Centralized error handling middleware
