@@ -1,12 +1,8 @@
 const express = require(`express`);
-// const inputValidation = require('./input_validation')
 
 const app = express ();
 
-// app.use(express.json({type: 'application/vnd.api+json'}));
-// app.use(express.urlencoded({ extended: true })); 
-
-// Allow for POST method and application/vnd.api+json Content-Type and Accept field
+// Allow for GET method and application/vnd.api+json Content-Type and Accept field
 app.use((req, res, next) => {
     if (['GET'].includes(req.method)) {
         // Check Content-Type
