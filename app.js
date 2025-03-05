@@ -57,10 +57,37 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/:date?',  (req,res) => {
-  console.log(req.params)
-  console.log(req.params.date)
-  const date = new Date(parseInt(req.params.date));
-  console.log(date.toString());
+
+  let date;
+
+  if (! req.params.date) {
+    date = new Date();  
+  } else {
+    // Date need an Integer with the UNIX time in milliseconds
+    date = new Date(parseInt(req.params.date));
+    if (isNaN(date)) {
+      return res.status(400).send({
+        "errors": [
+          {
+            "status": "400",
+            "code": "invalid-date",          
+            "title": "Invalid date",
+            "detail": "The date provided is not in a valid format [UNIX timestamp expected]"
+          }
+        ]
+      });
+    }
+  }
+  res.status(200).json({
+    "data": {
+        "type": "date",
+        "id": `date-${date.getTime()}`,
+        "attributes": {
+            "unix": `${date.getTime()}`,
+            "utc": `${date.toUTCString()}`
+        }
+    }
+  });
 });
 
 // Centralized error handling middleware
